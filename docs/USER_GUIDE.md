@@ -67,7 +67,7 @@ nex --version
 Expected output:
 
 ```
-NexLang 0.3.0
+NexLang 3.0.0
 ```
 
 If PowerShell says `nex is not recognized`, your Python "Scripts" folder
