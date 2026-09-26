@@ -1,0 +1,6 @@
+# This program intentionally triggers a NexLang error so you can see
+# what the diagnostics look like. Run it with:
+#     nex run examples/errors.nex
+
+SET total TO 10
+SAY total + "hello"

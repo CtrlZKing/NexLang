@@ -1,0 +1,21 @@
+# Variables: SET creates one, `=` re-assigns an existing one.
+
+SET name TO "Aditya"
+SET age TO 25
+SET is_student TO FALSE
+
+SAY "Name: {name}"
+SAY "Age: {age}"
+SAY "Is student: {is_student}"
+
+# Re-assignment
+age = age + 1
+SAY "Next year: {age}"
+
+# Multiple assignment
+SET x, y TO 10, 20
+SAY "x = {x}, y = {y}"
+
+# Swapping two variables without a temp variable
+SET x, y TO y, x
+SAY "After swap: x = {x}, y = {y}"

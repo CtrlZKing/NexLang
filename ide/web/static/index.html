@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>NexIDE</title>
+
+<link rel="manifest" href="/manifest.json" />
+<link rel="icon" type="image/png" sizes="192x192" href="/static/icons/icon-192.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/static/icons/icon-32.png" />
+<link rel="apple-touch-icon" href="/static/icons/icon-192.png" />
+<meta name="theme-color" content="#0e639c" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<div id="titlebar">
+  <div id="brand">
+    <img src="/static/icons/icon-32.png" alt="" id="brand-logo" />
+    <span id="brand-name">NexIDE</span>
+  </div>
+  <nav id="menubar">
+    <div class="menu">
+      <button class="menu-btn">File</button>
+      <div class="menu-list">
+        <button data-cmd="new">New File <kbd>Ctrl+N</kbd></button>
+        <button data-cmd="open">Open File... <kbd>Ctrl+O</kbd></button>
+        <button data-cmd="open-folder">Open Folder...</button>
+        <hr />
+        <button data-cmd="save">Save <kbd>Ctrl+S</kbd></button>
+        <button data-cmd="save-as">Save As... <kbd>Ctrl+Shift+S</kbd></button>
+        <button data-cmd="close-tab">Close File <kbd>Ctrl+W</kbd></button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="menu-btn">Edit</button>
+      <div class="menu-list">
+        <button data-cmd="undo">Undo <kbd>Ctrl+Z</kbd></button>
+        <button data-cmd="redo">Redo <kbd>Ctrl+Y</kbd></button>
+        <hr />
+        <button data-cmd="find">Find... <kbd>Ctrl+F</kbd></button>
+        <button data-cmd="replace">Replace... <kbd>Ctrl+H</kbd></button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="menu-btn">Run</button>
+      <div class="menu-list">
+        <button data-cmd="run">Run <kbd>F5</kbd></button>
+        <button data-cmd="stop">Stop <kbd>Shift+F5</kbd></button>
+      </div>
+    </div>
+    <div class="menu">
+      <button class="menu-btn">View</button>
+      <div class="menu-list">
+        <button data-cmd="toggle-theme">Toggle Light/Dark Theme</button>
+      </div>
+    </div>
+  </nav>
+  <div id="titlebar-right">
+    <button id="install-btn" hidden title="Install NexIDE as a standalone app">&#8681; Install NexIDE</button>
+  </div>
+</div>
+
+<div id="workspace">
+  <aside id="explorer">
+    <div class="panel-header">
+      <span>EXPLORER</span>
+      <button id="explorer-open-folder" title="Open Folder">&#128193;</button>
+    </div>
+    <div id="explorer-path" title=""></div>
+    <div id="explorer-tree"></div>
+  </aside>
+
+  <div id="editor-area">
+    <div id="tabs"></div>
+    <div id="editors"></div>
+  </div>
+</div>
+
+<div id="bottom-panel">
+  <div id="bottom-toolbar">
+    <button id="run-btn" class="primary">&#9654; Run</button>
+    <button id="stop-btn">&#9632; Stop</button>
+    <span id="bottom-label">Output</span>
+    <span id="diagnostic-summary"></span>
+  </div>
+  <div id="output"></div>
+  <div id="input-bar">
+    <label for="input-box">Input:</label>
+    <input type="text" id="input-box" disabled autocomplete="off" />
+  </div>
+</div>
+
+<div id="statusbar">
+  <span id="status-text">Ready</span>
+  <span id="status-right">NexLang</span>
+</div>
+
+<!-- Modal used for Open File / Open Folder / Save As (server-side directory browser) -->
+<div id="modal-overlay" hidden>
+  <div id="modal">
+    <div id="modal-header">
+      <span id="modal-title">Open</span>
+      <button id="modal-close">&times;</button>
+    </div>
+    <div id="modal-path"></div>
+    <div id="modal-list"></div>
+    <div id="modal-footer">
+      <input type="text" id="modal-filename" placeholder="filename.nex" hidden />
+      <button id="modal-cancel">Cancel</button>
+      <button id="modal-confirm" class="primary">Open</button>
+    </div>
+  </div>
+</div>
+
+<!-- Find / Replace bar -->
+<div id="find-bar" hidden>
+  <input type="text" id="find-input" placeholder="Find" />
+  <input type="text" id="replace-input" placeholder="Replace" hidden />
+  <button id="find-next">Next</button>
+  <button id="replace-one" hidden>Replace</button>
+  <button id="replace-all" hidden>Replace All</button>
+  <button id="find-close">&times;</button>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

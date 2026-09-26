@@ -1,0 +1,27 @@
+# maps_and_more.nex - maps, sets, tuples, and slicing (Phase 3 "Collections").
+
+SET person TO {"name": "Aditya", "age": 15, "city": "Delhi"}
+
+SAY person["name"]
+SAY "Keys: {KEYS(person)}"
+SAY "Values: {VALUES(person)}"
+
+FOR EACH key, value IN person
+    SAY "{key} -> {value}"
+END
+
+IF person CONTAINS "age" THEN
+    SAY "has an age"
+END
+
+SET numbers TO [10, 20, 30, 40, 50]
+SAY "middle: {numbers[1:4]}"
+SAY "first two: {numbers[:2]}"
+SAY "last two: {numbers[3:]}"
+
+SET unique_numbers TO SET_OF([1, 2, 2, 3, 3, 3])
+SAY "a set has no duplicates: {unique_numbers}"
+
+SET point TO TUPLE_OF([3, 4])
+SAY "an immutable point: {point}"
+SAY "x = {point[0]}, y = {point[1]}"

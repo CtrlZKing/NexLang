@@ -1,0 +1,26 @@
+# functions.nex - user-defined functions, defaults, and recursion.
+
+FUNCTION greet(name = "friend")
+    RETURN "Hello, " + name + "!"
+END
+
+SAY greet("Aditya")
+SAY greet()
+
+FUNCTION factorial(n)
+    IF n IS AT MOST 1 THEN
+        RETURN 1
+    END
+    RETURN n * factorial(n - 1)
+END
+
+SAY factorial(6)
+
+FUNCTION make_adder(base)
+    FUNCTION add_to_base(x)
+        RETURN base + x
+    END
+    RETURN add_to_base(5)
+END
+
+SAY make_adder(10)

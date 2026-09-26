@@ -1,0 +1,16 @@
+{
+  "name": "NexIDE",
+  "short_name": "NexIDE",
+  "description": "The NexLang integrated development environment",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#14161a",
+  "theme_color": "#0e639c",
+  "icons": [
+    { "src": "/static/icons/icon-16.png", "sizes": "16x16", "type": "image/png" },
+    { "src": "/static/icons/icon-32.png", "sizes": "32x32", "type": "image/png" },
+    { "src": "/static/icons/icon-48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

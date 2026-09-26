@@ -1,0 +1,30 @@
+# Loops: REPEAT ... TIMES, WHILE, REPEAT UNTIL, BREAK, CONTINUE
+
+REPEAT 3 TIMES
+    SAY "Hello!"
+END
+
+SET count TO 0
+WHILE count IS BELOW 5
+    SAY count
+    count = count + 1
+END
+
+SET n TO 0
+REPEAT UNTIL n IS 3
+    SAY "n is {n}"
+    n = n + 1
+END
+
+# BREAK and CONTINUE
+SET i TO 0
+WHILE TRUE
+    i = i + 1
+    IF i IS 3 THEN
+        CONTINUE
+    END
+    IF i IS AT LEAST 5 THEN
+        BREAK
+    END
+    SAY "i = {i}"
+END

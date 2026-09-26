@@ -1,0 +1,106 @@
+"""
+GUI smoke tests for the NexLang IDE. These require both Tkinter and a
+usable display, neither of which is available in this sandbox (no
+network to install Tkinter, no X server) - they are written to run for
+real on the target Windows/macOS/Linux desktop environment, and skip
+cleanly here rather than fail.
+"""
+
+import os
+import pytest
+
+tk = pytest.importorskip("tkinter")
+
+try:
+    _probe = tk.Tk()
+    _probe.destroy()
+    _HAS_DISPLAY = True
+except Exception:
+    _HAS_DISPLAY = False
+
+pytestmark = pytest.mark.skipif(not _HAS_DISPLAY, reason="no display available for Tkinter")
+
+
+def test_app_launches_with_one_untitled_tab():
+    from ide.app import NexIDE
+    app = NexIDE()
+    try:
+        assert len(app.tabs) == 1
+        tab = next(iter(app.tabs.values()))
+        assert tab.label == "untitled.nex"
+        assert 'Hello, NexLang!' in tab.editor.get_text()
+    finally:
+        app.destroy()
+
+
+def test_new_file_creates_additional_tab():
+    from ide.app import NexIDE
+    app = NexIDE()
+    try:
+        app.new_file()
+        assert len(app.tabs) == 2
+    finally:
+        app.destroy()
+
+
+def test_save_and_open_round_trip(tmp_path):
+    from ide.app import NexIDE
+    app = NexIDE()
+    try:
+        editor = app._active_editor()
+        editor.set_text('SAY "round trip"\n')
+        tab = app._active_tab()
+        target = tmp_path / "main.nex"
+        app._write_file(tab, str(target))
+        assert target.read_text(encoding="utf-8") == 'SAY "round trip"\n'
+        assert not editor.dirty
+
+        app.new_file()
+        app.open_file(str(target))
+        reopened = app._active_editor()
+        assert reopened.get_text() == 'SAY "round trip"\n'
+    finally:
+        app.destroy()
+
+
+def test_editing_marks_tab_dirty():
+    from ide.app import NexIDE
+    app = NexIDE()
+    try:
+        editor = app._active_editor()
+        assert not editor.dirty
+        editor.text.insert("end", "SAY 1\n")
+        editor.text.event_generate("<<Modified>>")
+        app.update()
+        assert editor.dirty
+    finally:
+        app.destroy()
+
+
+def test_run_and_stop_do_not_crash(tmp_path):
+    from ide.app import NexIDE
+    app = NexIDE()
+    try:
+        editor = app._active_editor()
+        editor.set_text('SAY "hi from ide"\n')
+        tab = app._active_tab()
+        app._write_file(tab, str(tmp_path / "run_me.nex"))
+        app.run_current()
+        app.update()
+        app.stop_run()
+    finally:
+        app.destroy()
+
+
+def test_syntax_error_on_save_highlights_line(tmp_path):
+    from ide.app import NexIDE
+    app = NexIDE()
+    try:
+        editor = app._active_editor()
+        editor.set_text("IF 1 IS 1 THEN\n    SAY \"x\"\n")
+        tab = app._active_tab()
+        app._write_file(tab, str(tmp_path / "broken.nex"))
+        ranges = editor.text.tag_ranges("error_line")
+        assert ranges, "expected an error_line tag to be applied"
+    finally:
+        app.destroy()

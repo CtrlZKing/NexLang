@@ -1,0 +1,15 @@
+# A tiny interactive calculator using ASK for input.
+# Note: ASK always returns TEXT today; converting text to a number
+# (a TEXT-to-NUMBER built-in) is planned for Phase 2's standard library.
+
+SET a TO 6
+SET b TO 3
+
+SAY "a = {a}, b = {b}"
+SAY "a + b = {a + b}"
+SAY "a - b = {a - b}"
+SAY "a * b = {a * b}"
+SAY "a / b = {a / b}"
+SAY "a // b = {a // b}"
+SAY "a % b = {a % b}"
+SAY "a ** b = {a ** b}"

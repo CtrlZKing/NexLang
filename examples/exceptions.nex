@@ -1,0 +1,22 @@
+# exceptions.nex - TRY / CATCH / FINALLY error handling.
+
+FUNCTION safe_divide(a, b)
+    TRY
+        RETURN a / b
+    CATCH err
+        SAY "Could not divide: {err}"
+        RETURN NOTHING
+    FINALLY
+        SAY "safe_divide({a}, {b}) finished"
+    END
+END
+
+SAY safe_divide(10, 2)
+SAY safe_divide(10, 0)
+
+TRY
+    SET numbers TO [1, 2, 3]
+    SAY numbers[10]
+CATCH err
+    SAY "Caught it: {err}"
+END

@@ -1,0 +1,26 @@
+# collections.nex - lists, indexing, and readable collection operations.
+
+SET numbers TO [5, 2, 9, 1]
+SAY numbers
+
+ADD 7 TO numbers
+SAY numbers
+
+SAY "total: {SUM(numbers)}"
+SAY "highest: {MAXIMUM(numbers)}"
+SAY "lowest: {MINIMUM(numbers)}"
+SAY "sorted: {SORTED(numbers)}"
+SAY "size: {SIZE OF numbers}"
+
+IF numbers CONTAINS 9 THEN
+    SAY "found 9"
+END
+
+FOR EACH n IN SORTED(numbers)
+    SAY n
+END
+
+SET empty_list TO []
+IF empty_list IS EMPTY THEN
+    SAY "the list is empty"
+END

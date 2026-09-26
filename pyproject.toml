@@ -1,0 +1,32 @@
+[project]
+name = "nexlang"
+version = "3.0.0"
+description = "NexLang: a beginner-friendly, English-like general-purpose programming language (Python bootstrap implementation)"
+requires-python = ">=3.9"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+# Not required: `nex repl` works with the standard library's `input()`.
+# Installing this gives cross-line command history and Tab/Shift+Tab
+# indent editing at the interactive prompt - see docs/USER_GUIDE.md.
+repl = ["prompt_toolkit>=3.0"]
+
+[project.scripts]
+nex = "cli.main:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["compiler", "compiler.lexer", "compiler.parser", "compiler.ast_nodes",
+            "compiler.interpreter", "compiler.errors", "cli", "repl", "ide", "ide.web"]
+
+[tool.setuptools.package-data]
+ide = ["assets/*.ico", "assets/*.png"]
+"ide.web" = ["static/*.html", "static/*.css", "static/*.js", "static/*.json",
+             "static/icons/*.png"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

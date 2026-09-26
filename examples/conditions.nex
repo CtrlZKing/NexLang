@@ -1,0 +1,21 @@
+# Conditionals: IF / ELSE IF / OTHERWISE / END
+
+SET age TO 20
+
+IF age IS AT LEAST 18 THEN
+    SAY "You are an adult."
+OTHERWISE
+    SAY "You are a minor."
+END
+
+SET score TO 72
+
+IF score IS AT LEAST 90 THEN
+    SAY "Grade: A"
+ELSE IF score IS AT LEAST 80 THEN
+    SAY "Grade: B"
+ELSE IF score IS AT LEAST 70 THEN
+    SAY "Grade: C"
+OTHERWISE
+    SAY "Grade: F"
+END

@@ -1,0 +1,25 @@
+# types.nex - type annotations and the static semantic-analysis pass
+# (Phase 3b). Run this normally with `nex run`; check it with `nex check`
+# to see the same checks catch mistakes *before* the program runs.
+
+SET age AS NUMBER TO 15
+SET name AS TEXT TO "Aditya"
+SET nickname AS TEXT OR NOTHING TO NULL
+
+SAY "{name} is {age}"
+
+FUNCTION average_of(a AS NUMBER, b AS NUMBER) RETURNS NUMBER
+    RETURN (a + b) / 2
+END
+
+SAY average_of(10, 20)
+
+FUNCTION greet(who AS TEXT OR NOTHING) RETURNS TEXT
+    IF who IS NULL THEN
+        RETURN "Hello, stranger!"
+    END
+    RETURN "Hello, " + who + "!"
+END
+
+SAY greet(name)
+SAY greet(nickname)

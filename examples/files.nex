@@ -1,0 +1,20 @@
+# files.nex - reading, writing, appending, and checking files.
+# This example cleans up after itself so it can run from any directory.
+
+WRITE "First line." TO FILE "nexlang_example_scratch.txt"
+APPEND "\nSecond line." TO FILE "nexlang_example_scratch.txt"
+
+IF FILE "nexlang_example_scratch.txt" EXISTS THEN
+    SAY "The file exists."
+END
+
+SET contents TO READ FILE "nexlang_example_scratch.txt"
+SAY contents
+
+DELETE FILE "nexlang_example_scratch.txt"
+
+IF FILE "nexlang_example_scratch.txt" EXISTS THEN
+    SAY "This should not print."
+OTHERWISE
+    SAY "Cleaned up."
+END
