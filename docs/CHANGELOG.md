@@ -4,7 +4,7 @@ All notable changes to NexLang are recorded here. Dates are when the work
 was done, not a formal release schedule (NexLang isn't published anywhere
 yet).
 
-## [0.3.0] "POWER" - Phase 3b "Type Safety"
+## [3.0.0] "POWER" - Phase 3b "Type Safety"
 
 - **Type annotations**: `SET x AS TYPE TO expr`, function parameters
   (`name AS TYPE`, with or without a default), `RETURNS TYPE` on function
@@ -52,7 +52,7 @@ already-working NexLang program's *execution* behavior cannot change
 because this phase shipped - only what `nex check` reports about it.
 NexLang remains dynamically typed and dynamically checked at runtime.
 
-## [0.3.0] (web IDE) - NexIDE rebuilt as an HTML/CSS/JS app
+## [3.0.0] (web IDE) - NexIDE rebuilt as an HTML/CSS/JS app
 
 Replaces the Tkinter identity patch below with a structural fix instead
 of a cosmetic one - see `docs/IDE_IDENTITY.md` for the full writeup.
@@ -99,7 +99,7 @@ No language/lexer/parser/interpreter changes; all 304 tests pass.
   programs (unchanged from before - see docs/IDE_IDENTITY.md, "What
   this does NOT change"). No bytecode/VM/self-hosting work was started.
 
-## [0.3.0] (identity patch, superseded above) - Tkinter window identity
+## [3.0.0] (identity patch, superseded above) - Tkinter window identity
 
 Stage A of the original NexIDE independence plan. Superseded by the
 web-IDE rebuild above, but kept here for history; the code from this
@@ -129,7 +129,7 @@ patch now lives in `ide/legacy_tkinter/`.
   patch does and does not fix, and `docs/PROJECT_STATUS.md` for the
   Stage B/C/D migration plan.
 
-## [0.3.0] "POWER" - Phase 3 "Collections" addendum
+## [3.0.0] "POWER" - Phase 3 "Collections" addendum
 
 Delivered on top of Phase 2 below, in the same 0.3.0 line (no version bump -
 this rounds out the "POWER" collections story rather than starting a new one):
@@ -160,7 +160,7 @@ this rounds out the "POWER" collections story rather than starting a new one):
 See docs/LANGUAGE.md's Maps/Sets/Tuples sections for the full reference,
 and docs/PROJECT_STATUS.md for the updated audit.
 
-## [0.3.0] "POWER" - Phase 2
+## [3.0.0] "POWER" - Phase 2
 
 ### Added
 
