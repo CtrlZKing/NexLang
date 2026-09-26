@@ -4,7 +4,7 @@ NexLang is a beginner-friendly, English-like general-purpose programming
 language. It aims for Python-level versatility with much more readable
 syntax and excellent, teachable error messages.
 
-> **Status: Phase 3b of 11 ("Type Safety"), v0.3.0.** The core language
+> **Status: Phase 3b of 11 ("Type Safety"), v3.0.0.** The core language
 > (variables, arithmetic, `SAY`, `IF`/`OTHERWISE`, `WHILE`, `REPEAT`,
 > `ASK`) plus Phase 2 "POWER" (user-defined functions with closures and
 > recursion, list collections, `FOR EACH`/`FOR ... TO ...` loops,
@@ -39,7 +39,7 @@ nex --version
 Expected output:
 
 ```
-NexLang 0.3.0
+NexLang 3.0.0
 ```
 
 ## Your first program
